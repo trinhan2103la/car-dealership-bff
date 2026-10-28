@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "description": "NestJS BFF - lop trung gian giua frontend va core API",
+  "packageManager": "pnpm@10.11.1",
   "scripts": {
     "prepare": "husky",
     "build": "nest build",
