@@ -1,0 +1,53 @@
+name: ci
+
+# Ngày 19 (ADR-011): CI riêng cho repo BFF (NestJS 12 ESM, test bằng vitest).
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  node-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - name: Install
+        run: pnpm install --frozen-lockfile
+      - name: Typecheck
+        run: pnpm typecheck
+      # eslint config thêm sau (plan Ngày 19 nhắc eslint). Bật khi có file cấu hình.
+      - name: Lint
+        if: ${{ hashFiles('eslint.config.js', 'eslint.config.mjs', '.eslintrc.cjs', '.eslintrc.json') != '' }}
+        run: pnpm lint
+      - name: Unit tests
+        run: pnpm test
+      - name: E2E tests
+        run: pnpm test:e2e
+      - name: Build
+        run: pnpm build
+
+  commitlint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - name: Install
+        run: pnpm install --frozen-lockfile
+      - name: Lint PR commits
+        if: github.event_name == 'pull_request'
+        run: npx commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }}
