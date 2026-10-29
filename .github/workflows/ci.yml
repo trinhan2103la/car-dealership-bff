@@ -35,6 +35,37 @@ jobs:
       - name: Build
         run: pnpm build
 
+  # Ngày 20 (Req 21, 29.2): chặn secret lộ, lỗ hổng npm mức high, và scope @volo/ (commercial).
+  security:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      # Repo thuộc tài khoản cá nhân nên gitleaks-action không cần license key.
+      - name: Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - name: Install
+        run: pnpm install --frozen-lockfile
+      - name: Dependency audit (chặn high/critical)
+        run: pnpm audit --audit-level=high
+      - name: Cấm npm scope @volo/
+        run: |
+          if grep -nE '@volo/' package.json pnpm-lock.yaml; then
+            echo "::error::Phat hien scope @volo/ (commercial) trong package.json/pnpm-lock.yaml."
+            exit 1
+          fi
+
   commitlint:
     runs-on: ubuntu-latest
     steps:
