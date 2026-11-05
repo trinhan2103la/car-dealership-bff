@@ -1,9 +1,11 @@
+import type { IncomingMessage } from 'node:http';
 import {
+  ensureCorrelationId,
   resolveCorrelationId,
   CORRELATION_ID_REGEX,
 } from './correlation-id.middleware.js';
 
-/** Ngày 17: unit test resolver Correlation_Id (cùng luật với Core_API). */
+/** Unit test resolver Correlation_Id (cùng luật với Core_API). */
 describe('resolveCorrelationId', () => {
   it('giữ nguyên giá trị hợp lệ', () => {
     expect(resolveCorrelationId('abc-123_XYZ')).toBe('abc-123_XYZ');
@@ -29,4 +31,24 @@ describe('resolveCorrelationId', () => {
       expect(CORRELATION_ID_REGEX.test(id)).toBe(true);
     },
   );
+});
+
+/** Lỗi thật gặp khi chạy E2E: pino-http và middleware mỗi bên tự sinh một mã khác nhau cho cùng request. */
+describe('ensureCorrelationId', () => {
+  const req = (headers: Record<string, string> = {}) => ({ headers }) as unknown as IncomingMessage;
+
+  it('không có header: mọi lần gọi trên CÙNG request trả cùng một mã', () => {
+    const r = req();
+    const first = ensureCorrelationId(r);
+    expect(ensureCorrelationId(r)).toBe(first);
+    expect(first).toMatch(CORRELATION_ID_REGEX);
+  });
+
+  it('có header hợp lệ: dùng đúng header', () => {
+    expect(ensureCorrelationId(req({ 'x-correlation-id': 'abc-1' }))).toBe('abc-1');
+  });
+
+  it('hai request khác nhau có mã khác nhau', () => {
+    expect(ensureCorrelationId(req())).not.toBe(ensureCorrelationId(req()));
+  });
 });

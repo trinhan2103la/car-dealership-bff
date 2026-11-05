@@ -1,12 +1,14 @@
 import { Controller, Get } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { HealthCheck, HealthCheckService } from '@nestjs/terminus';
 
 /**
- * Ngày 17 (Req 22, 28.13): health của BFF.
+ * Health của BFF.
  * - /health/live: liveness, không phụ thuộc dependency -> 200 khi process còn sống.
  * - /health/ready: readiness; hiện BFF chưa có dependency bắt buộc nên cũng 200.
  *   Khi thêm kiểm Core_API reachability (phase sau) sẽ bổ sung indicator vào đây.
  */
+@ApiTags('Health')
 @Controller('health')
 export class HealthController {
   constructor(private readonly health: HealthCheckService) {}

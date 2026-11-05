@@ -1,0 +1,2 @@
+src/core-api/generated/** text eol=lf
+openapi/*.json text eol=lf

@@ -1,6 +1,6 @@
 # car-dealership-bff
 
-BFF (NestJS 12, ESM-only) của dự án **Car Dealership Platform** — điểm vào duy nhất cho hai frontend; validate định dạng input, session cookie + CSRF, kiểm quyền mức route, ánh xạ sang core API (ẩn core khỏi Internet), rate limiting, chuẩn hóa lỗi. Khung ứng dụng NestJS được tạo ở Ngày 17.
+BFF (NestJS 12, ESM-only) của dự án **Car Dealership Platform** — điểm vào duy nhất cho hai frontend: validate định dạng input, cấp và kiểm access token (JWT ES256) + refresh token (cookie HttpOnly), kiểm quyền mức route, ánh xạ sang core API (ẩn core khỏi Internet), rate limiting, chuẩn hóa lỗi.
 
 ## Hệ 3 repo
 
@@ -47,4 +47,4 @@ Toàn hệ (DB, core, bff, web) chạy bằng Docker Compose từ repo `car-deal
 
 ## Tài liệu
 
-Thiết kế/ERD/ADR/roadmap: spec `car-dealership-platform` trong Kiro. Source code là nguồn sự thật cuối cùng.
+Thiết kế, ERD và ADR được quản lý riêng; source code là nguồn sự thật cuối cùng.

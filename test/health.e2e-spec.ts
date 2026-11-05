@@ -4,7 +4,7 @@ import request from 'supertest';
 import { AppModule } from '../src/app.module.js';
 
 /**
- * Ngày 17 (Req 22, 28.13): /health/live trả 200 và response có header X-Correlation-Id.
+ * /health/live trả 200 và response có header X-Correlation-Id.
  */
 describe('Health (e2e)', () => {
   let app: INestApplication;
