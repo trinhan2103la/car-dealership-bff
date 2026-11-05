@@ -1,6 +1,6 @@
 name: ci
 
-# Ngày 19 (ADR-011): CI riêng cho repo BFF (NestJS 12 ESM, test bằng vitest).
+# CI riêng cho repo BFF (NestJS 12 ESM, test bằng vitest).
 on:
   pull_request:
     branches: [main]
@@ -24,7 +24,7 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Typecheck
         run: pnpm typecheck
-      # eslint config thêm sau (plan Ngày 19 nhắc eslint). Bật khi có file cấu hình.
+      # Bật khi có file cấu hình eslint.
       - name: Lint
         if: ${{ hashFiles('eslint.config.js', 'eslint.config.mjs', '.eslintrc.cjs', '.eslintrc.json') != '' }}
         run: pnpm lint
@@ -35,7 +35,7 @@ jobs:
       - name: Build
         run: pnpm build
 
-  # Ngày 20 (Req 21, 29.2): chặn secret lộ, lỗ hổng npm mức high, và scope @volo/ (commercial).
+  # Chặn secret lộ, lỗ hổng npm mức high, và scope @volo/ (commercial).
   security:
     runs-on: ubuntu-latest
     permissions:
@@ -66,6 +66,22 @@ jobs:
             exit 1
           fi
 
+  # Kiểu TypeScript phải khớp bản OpenAPI vendored. Sửa openapi.json mà quên sinh lại -> đỏ.
+  openapi-types-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - name: Install
+        run: pnpm install --frozen-lockfile
+      - name: Sinh lại kiểu từ openapi vendored
+        run: pnpm generate:types
+      - name: Kiểu sinh ra phải khớp bản đã commit
+        run: git diff --exit-code -- src/core-api/generated
   commitlint:
     runs-on: ubuntu-latest
     steps:
