@@ -1,0 +1,44 @@
+# Dependencies (cai lai trong image)
+node_modules
+.pnpm-store
+
+# Build output (build lai trong image)
+dist
+build
+
+# Env & secrets — KHONG BAO GIO copy vao build context
+.env
+.env.*
+!.env.example
+
+# VCS & CI
+.git
+.github
+.gitignore
+.gitattributes
+
+# Test & coverage
+test
+coverage
+.nyc_output
+**/*.spec.ts
+vitest.config.ts
+vitest.e2e.config.ts
+
+# Docker
+Dockerfile
+.dockerignore
+
+# Editor / OS
+.vscode
+.idea
+.DS_Store
+
+# Logs & cache
+*.log
+*.tsbuildinfo
+
+# Tai lieu / husky (khong can de chay)
+README.md
+CONTRIBUTING.md
+.husky
