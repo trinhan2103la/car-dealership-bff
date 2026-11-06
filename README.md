@@ -2,6 +2,13 @@
 
 BFF (NestJS 12, ESM-only) của dự án **Car Dealership Platform** — điểm vào duy nhất cho hai frontend: validate định dạng input, cấp và kiểm access token (JWT ES256) + refresh token (cookie HttpOnly), kiểm quyền mức route, ánh xạ sang core API (ẩn core khỏi Internet), rate limiting, chuẩn hóa lỗi.
 
+## Demo
+
+- BFF: https://car-dealership-bff.onrender.com (Render free, Singapore). Chỉ `/health/live` gọi trực tiếp có ý nghĩa; API dùng qua Admin_Portal https://car-dealership-web-pink.vercel.app (Vercel rewrite `/api/*` về đây).
+- Render free ngủ sau 15 phút không có request; request đầu chậm 30–60 giây.
+- Swagger (`/docs`) chỉ bật khi `NODE_ENV` khác `production`, nên trên demo trả 404.
+- Trạng thái tổng của dự án (đã xong / chưa xong): README của `car-dealership-core`.
+
 ## Hệ 3 repo
 
 Clone cả ba repo **ngang hàng (sibling)** dưới cùng thư mục cha (ví dụ `D:\WorkSpace\FRT\PROJECT_PERSONAL\`):
