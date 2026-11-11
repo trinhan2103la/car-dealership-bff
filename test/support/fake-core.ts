@@ -8,6 +8,8 @@ export interface RecordedRequest {
   url: string;
   headers: IncomingHttpHeaders;
   body: string;
+  /** Byte gốc của body (multipart nhị phân không đọc đúng được qua chuỗi utf8). */
+  raw: Buffer;
 }
 
 export interface FakeReply {
@@ -31,11 +33,13 @@ export class FakeCore {
       const chunks: Buffer[] = [];
       req.on('data', (c: Buffer) => chunks.push(c));
       req.on('end', () => {
+        const raw = Buffer.concat(chunks);
         const recorded: RecordedRequest = {
           method: req.method ?? '',
           url: req.url ?? '',
           headers: req.headers,
-          body: Buffer.concat(chunks).toString('utf8'),
+          body: raw.toString('utf8'),
+          raw,
         };
         this.requests.push(recorded);
         const reply = this.handler(recorded);
