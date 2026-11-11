@@ -21,6 +21,7 @@
     "esModuleInterop": true,
     "types": [
       "node",
+      "multer",
       "vitest/globals"
     ]
   },

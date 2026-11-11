@@ -4,6 +4,794 @@
  */
 
 export interface paths {
+    "/api/catalog/brands": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: {
+                    Keyword?: string;
+                    Status?: components["schemas"]["CarDealership.CoreService.Catalog.BrandStatus"];
+                    Page?: number;
+                    PageSize?: number;
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Volo.Abp.Application.Dtos.PagedResultDto`1[[CarDealership.CoreService.Catalog.Brands.BrandDto, CarDealership.CoreService.Application.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                        "application/json": components["schemas"]["Volo.Abp.Application.Dtos.PagedResultDto`1[[CarDealership.CoreService.Catalog.Brands.BrandDto, CarDealership.CoreService.Application.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                        "text/json": components["schemas"]["Volo.Abp.Application.Dtos.PagedResultDto`1[[CarDealership.CoreService.Catalog.Brands.BrandDto, CarDealership.CoreService.Application.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["CarDealership.CoreService.Catalog.Brands.SaveBrandInput"];
+                    "text/json": components["schemas"]["CarDealership.CoreService.Catalog.Brands.SaveBrandInput"];
+                    "application/*+json": components["schemas"]["CarDealership.CoreService.Catalog.Brands.SaveBrandInput"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["CarDealership.CoreService.Catalog.Brands.BrandDto"];
+                        "application/json": components["schemas"]["CarDealership.CoreService.Catalog.Brands.BrandDto"];
+                        "text/json": components["schemas"]["CarDealership.CoreService.Catalog.Brands.BrandDto"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/catalog/brands/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["CarDealership.CoreService.Catalog.Brands.BrandDto"];
+                        "application/json": components["schemas"]["CarDealership.CoreService.Catalog.Brands.BrandDto"];
+                        "text/json": components["schemas"]["CarDealership.CoreService.Catalog.Brands.BrandDto"];
+                    };
+                };
+            };
+        };
+        put: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["CarDealership.CoreService.Catalog.Brands.SaveBrandInput"];
+                    "text/json": components["schemas"]["CarDealership.CoreService.Catalog.Brands.SaveBrandInput"];
+                    "application/*+json": components["schemas"]["CarDealership.CoreService.Catalog.Brands.SaveBrandInput"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["CarDealership.CoreService.Catalog.Brands.BrandDto"];
+                        "application/json": components["schemas"]["CarDealership.CoreService.Catalog.Brands.BrandDto"];
+                        "text/json": components["schemas"]["CarDealership.CoreService.Catalog.Brands.BrandDto"];
+                    };
+                };
+            };
+        };
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/catalog/brands/{id}/status": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["CarDealership.CoreService.Catalog.Brands.ChangeBrandStatusInput"];
+                    "text/json": components["schemas"]["CarDealership.CoreService.Catalog.Brands.ChangeBrandStatusInput"];
+                    "application/*+json": components["schemas"]["CarDealership.CoreService.Catalog.Brands.ChangeBrandStatusInput"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["CarDealership.CoreService.Catalog.Brands.BrandDto"];
+                        "application/json": components["schemas"]["CarDealership.CoreService.Catalog.Brands.BrandDto"];
+                        "text/json": components["schemas"]["CarDealership.CoreService.Catalog.Brands.BrandDto"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/catalog/car-models": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: {
+                    BrandId?: string;
+                    Status?: components["schemas"]["CarDealership.CoreService.Catalog.CatalogStatus"];
+                    Keyword?: string;
+                    Page?: number;
+                    PageSize?: number;
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["Volo.Abp.Application.Dtos.PagedResultDto`1[[CarDealership.CoreService.Catalog.CarModels.CarModelSummaryDto, CarDealership.CoreService.Application.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                        "application/json": components["schemas"]["Volo.Abp.Application.Dtos.PagedResultDto`1[[CarDealership.CoreService.Catalog.CarModels.CarModelSummaryDto, CarDealership.CoreService.Application.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                        "text/json": components["schemas"]["Volo.Abp.Application.Dtos.PagedResultDto`1[[CarDealership.CoreService.Catalog.CarModels.CarModelSummaryDto, CarDealership.CoreService.Application.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.CreateCarModelInput"];
+                    "text/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.CreateCarModelInput"];
+                    "application/*+json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.CreateCarModelInput"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.CarModelDto"];
+                        "application/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.CarModelDto"];
+                        "text/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.CarModelDto"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/catalog/car-models/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.CarModelDto"];
+                        "application/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.CarModelDto"];
+                        "text/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.CarModelDto"];
+                    };
+                };
+            };
+        };
+        put: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.UpdateCarModelInput"];
+                    "text/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.UpdateCarModelInput"];
+                    "application/*+json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.UpdateCarModelInput"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.CarModelDto"];
+                        "application/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.CarModelDto"];
+                        "text/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.CarModelDto"];
+                    };
+                };
+            };
+        };
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/catalog/car-models/{id}/transitions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.ChangeCatalogStatusInput"];
+                    "text/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.ChangeCatalogStatusInput"];
+                    "application/*+json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.ChangeCatalogStatusInput"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.CarModelDto"];
+                        "application/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.CarModelDto"];
+                        "text/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.CarModelDto"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/catalog/car-models/{id}/publish-check": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.PublishCheckDto"];
+                        "application/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.PublishCheckDto"];
+                        "text/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.PublishCheckDto"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/catalog/car-models/{carModelId}/variants": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    carModelId: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.CarVariantDto"][];
+                        "application/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.CarVariantDto"][];
+                        "text/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.CarVariantDto"][];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    carModelId: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.SaveCarVariantInput"];
+                    "text/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.SaveCarVariantInput"];
+                    "application/*+json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.SaveCarVariantInput"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.CarVariantDto"];
+                        "application/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.CarVariantDto"];
+                        "text/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.CarVariantDto"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/catalog/car-models/{carModelId}/variants/{variantId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    carModelId: string;
+                    variantId: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.CarVariantDto"];
+                        "application/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.CarVariantDto"];
+                        "text/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.CarVariantDto"];
+                    };
+                };
+            };
+        };
+        put: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    carModelId: string;
+                    variantId: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.SaveCarVariantInput"];
+                    "text/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.SaveCarVariantInput"];
+                    "application/*+json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.SaveCarVariantInput"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.CarVariantDto"];
+                        "application/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.CarVariantDto"];
+                        "text/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.CarVariantDto"];
+                    };
+                };
+            };
+        };
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/catalog/car-models/{carModelId}/variants/{variantId}/transitions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    carModelId: string;
+                    variantId: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.ChangeCatalogStatusInput"];
+                    "text/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.ChangeCatalogStatusInput"];
+                    "application/*+json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.ChangeCatalogStatusInput"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.CarVariantDto"];
+                        "application/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.CarVariantDto"];
+                        "text/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.CarVariantDto"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/catalog/public/car-models": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: {
+                    Q?: string;
+                    Brand?: string[];
+                    BodyType?: string[];
+                    Fuel?: string[];
+                    Transmission?: string[];
+                    Seats?: number[];
+                    MinPrice?: number;
+                    MaxPrice?: number;
+                    Sort?: string;
+                    Page?: number;
+                    PageSize?: number;
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["CarDealership.CoreService.Catalog.Public.PublicCarListDto"];
+                        "application/json": components["schemas"]["CarDealership.CoreService.Catalog.Public.PublicCarListDto"];
+                        "text/json": components["schemas"]["CarDealership.CoreService.Catalog.Public.PublicCarListDto"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/catalog/public/car-models/by-slug": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: {
+                    brandSlug?: string;
+                    modelSlug?: string;
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["CarDealership.CoreService.Catalog.Public.PublicCarModelLookupDto"];
+                        "application/json": components["schemas"]["CarDealership.CoreService.Catalog.Public.PublicCarModelLookupDto"];
+                        "text/json": components["schemas"]["CarDealership.CoreService.Catalog.Public.PublicCarModelLookupDto"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/catalog/public/home-cars": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["CarDealership.CoreService.Catalog.Public.PublicCarCardDto"][];
+                        "application/json": components["schemas"]["CarDealership.CoreService.Catalog.Public.PublicCarCardDto"][];
+                        "text/json": components["schemas"]["CarDealership.CoreService.Catalog.Public.PublicCarCardDto"][];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/catalog/public/brands": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["CarDealership.CoreService.Catalog.Public.PublicBrandDto"][];
+                        "application/json": components["schemas"]["CarDealership.CoreService.Catalog.Public.PublicBrandDto"][];
+                        "text/json": components["schemas"]["CarDealership.CoreService.Catalog.Public.PublicBrandDto"][];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/catalog/public/sitemap": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["CarDealership.CoreService.Catalog.Public.SitemapEntryDto"][];
+                        "application/json": components["schemas"]["CarDealership.CoreService.Catalog.Public.SitemapEntryDto"][];
+                        "text/json": components["schemas"]["CarDealership.CoreService.Catalog.Public.SitemapEntryDto"][];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/app/auth/sessions": {
         parameters: {
             query?: never;
@@ -210,10 +998,441 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/catalog/car-models/{carModelId}/images": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    carModelId: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "multipart/form-data": {
+                        /** Format: binary */
+                        Sm?: string;
+                        /** Format: binary */
+                        Md?: string;
+                        /** Format: binary */
+                        Lg?: string;
+                        Alt?: string;
+                        /** Format: uuid */
+                        CarVariantId?: string;
+                    };
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.VehicleImageDto"];
+                        "application/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.VehicleImageDto"];
+                        "text/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.VehicleImageDto"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/catalog/car-models/{carModelId}/images/order": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    carModelId: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["CarDealership.CoreService.Catalog.Images.ReorderImagesInput"];
+                    "text/json": components["schemas"]["CarDealership.CoreService.Catalog.Images.ReorderImagesInput"];
+                    "application/*+json": components["schemas"]["CarDealership.CoreService.Catalog.Images.ReorderImagesInput"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.VehicleImageDto"][];
+                        "application/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.VehicleImageDto"][];
+                        "text/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.VehicleImageDto"][];
+                    };
+                };
+            };
+        };
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/catalog/car-models/{carModelId}/images/{imageId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    carModelId: string;
+                    imageId: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["CarDealership.CoreService.Catalog.Images.UpdateImageInput"];
+                    "text/json": components["schemas"]["CarDealership.CoreService.Catalog.Images.UpdateImageInput"];
+                    "application/*+json": components["schemas"]["CarDealership.CoreService.Catalog.Images.UpdateImageInput"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "text/plain": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.VehicleImageDto"];
+                        "application/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.VehicleImageDto"];
+                        "text/json": components["schemas"]["CarDealership.CoreService.Catalog.CarModels.VehicleImageDto"];
+                    };
+                };
+            };
+        };
+        post?: never;
+        delete: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    carModelId: string;
+                    imageId: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
+        /** @enum {string} */
+        "CarDealership.CoreService.Catalog.BrandStatus": "Active" | "Inactive";
+        "CarDealership.CoreService.Catalog.Brands.BrandDto": {
+            /** Format: uuid */
+            id?: string;
+            name?: string | null;
+            slug?: string | null;
+            status?: components["schemas"]["CarDealership.CoreService.Catalog.BrandStatus"];
+            /** Format: int32 */
+            displayOrder?: number;
+            logoKey?: string | null;
+            isDemo?: boolean;
+            concurrencyStamp?: string | null;
+            /** Format: date-time */
+            creationTime?: string;
+            /** Format: date-time */
+            lastModificationTime?: string | null;
+        };
+        "CarDealership.CoreService.Catalog.Brands.ChangeBrandStatusInput": {
+            status?: components["schemas"]["CarDealership.CoreService.Catalog.BrandStatus"];
+            concurrencyStamp?: string | null;
+        };
+        "CarDealership.CoreService.Catalog.Brands.SaveBrandInput": {
+            name?: string | null;
+            slug?: string | null;
+            status?: components["schemas"]["CarDealership.CoreService.Catalog.BrandStatus"];
+            /** Format: int32 */
+            displayOrder?: number;
+            logoKey?: string | null;
+            concurrencyStamp?: string | null;
+        };
+        "CarDealership.CoreService.Catalog.CarModels.CarModelDto": {
+            /** Format: uuid */
+            id?: string;
+            /** Format: uuid */
+            brandId?: string;
+            name?: string | null;
+            slug?: string | null;
+            status?: components["schemas"]["CarDealership.CoreService.Catalog.CatalogStatus"];
+            isFeatured?: boolean;
+            /** Format: int32 */
+            displayOrder?: number;
+            /** Format: int64 */
+            minPublishedPrice?: number | null;
+            /** Format: int64 */
+            maxPublishedPrice?: number | null;
+            /** Format: date-time */
+            publishedAt?: string | null;
+            concurrencyStamp?: string | null;
+            description?: string | null;
+            isDemo?: boolean;
+            /** Format: date-time */
+            creationTime?: string;
+            /** Format: date-time */
+            lastModificationTime?: string | null;
+            variants?: components["schemas"]["CarDealership.CoreService.Catalog.CarModels.CarVariantDto"][] | null;
+            images?: components["schemas"]["CarDealership.CoreService.Catalog.CarModels.VehicleImageDto"][] | null;
+        };
+        "CarDealership.CoreService.Catalog.CarModels.CarModelSummaryDto": {
+            /** Format: uuid */
+            id?: string;
+            /** Format: uuid */
+            brandId?: string;
+            name?: string | null;
+            slug?: string | null;
+            status?: components["schemas"]["CarDealership.CoreService.Catalog.CatalogStatus"];
+            isFeatured?: boolean;
+            /** Format: int32 */
+            displayOrder?: number;
+            /** Format: int64 */
+            minPublishedPrice?: number | null;
+            /** Format: int64 */
+            maxPublishedPrice?: number | null;
+            /** Format: date-time */
+            publishedAt?: string | null;
+            concurrencyStamp?: string | null;
+        };
+        "CarDealership.CoreService.Catalog.CarModels.CarVariantDto": {
+            /** Format: uuid */
+            id?: string;
+            /** Format: uuid */
+            carModelId?: string;
+            name?: string | null;
+            status?: components["schemas"]["CarDealership.CoreService.Catalog.CatalogStatus"];
+            /** Format: int64 */
+            referencePrice?: number | null;
+            contactForPrice?: boolean;
+            bodyType?: string | null;
+            fuel?: string | null;
+            transmission?: string | null;
+            /** Format: int32 */
+            seats?: number;
+            engine?: string | null;
+            power?: string | null;
+            extraSpecs?: components["schemas"]["CarDealership.CoreService.Catalog.CarModels.ExtraSpecDto"][] | null;
+            isDemo?: boolean;
+            concurrencyStamp?: string | null;
+        };
+        "CarDealership.CoreService.Catalog.CarModels.ChangeCatalogStatusInput": {
+            status?: components["schemas"]["CarDealership.CoreService.Catalog.CatalogStatus"];
+            concurrencyStamp?: string | null;
+        };
+        "CarDealership.CoreService.Catalog.CarModels.CreateCarModelInput": {
+            /** Format: uuid */
+            brandId?: string;
+            name?: string | null;
+            slug?: string | null;
+            description?: string | null;
+            isFeatured?: boolean;
+            /** Format: int32 */
+            displayOrder?: number;
+        };
+        "CarDealership.CoreService.Catalog.CarModels.ExtraSpecDto": {
+            group?: string | null;
+            name?: string | null;
+            value?: string | null;
+            unit?: string | null;
+        };
+        "CarDealership.CoreService.Catalog.CarModels.PublishCheckDto": {
+            canPublish?: boolean;
+            rules?: components["schemas"]["CarDealership.CoreService.Catalog.CarModels.PublishRuleResultDto"][] | null;
+            invalidImageIds?: string[] | null;
+        };
+        "CarDealership.CoreService.Catalog.CarModels.PublishRuleResultDto": {
+            code?: string | null;
+            passed?: boolean;
+        };
+        "CarDealership.CoreService.Catalog.CarModels.SaveCarVariantInput": {
+            name?: string | null;
+            bodyType?: string | null;
+            fuel?: string | null;
+            transmission?: string | null;
+            /** Format: int32 */
+            seats?: number | null;
+            engine?: string | null;
+            power?: string | null;
+            /** Format: double */
+            referencePrice?: number | null;
+            contactForPrice?: boolean;
+            extraSpecs?: components["schemas"]["CarDealership.CoreService.Catalog.CarModels.ExtraSpecDto"][] | null;
+            concurrencyStamp?: string | null;
+        };
+        "CarDealership.CoreService.Catalog.CarModels.UpdateCarModelInput": {
+            name?: string | null;
+            slug?: string | null;
+            description?: string | null;
+            isFeatured?: boolean;
+            /** Format: int32 */
+            displayOrder?: number;
+            concurrencyStamp?: string | null;
+        };
+        "CarDealership.CoreService.Catalog.CarModels.VehicleImageDto": {
+            /** Format: uuid */
+            id?: string;
+            /** Format: uuid */
+            carVariantId?: string | null;
+            storageKey?: string | null;
+            alt?: string | null;
+            /** Format: int32 */
+            displayOrder?: number;
+            isCover?: boolean;
+        };
+        /** @enum {string} */
+        "CarDealership.CoreService.Catalog.CatalogStatus": "Draft" | "Published" | "Hidden" | "Archived";
+        "CarDealership.CoreService.Catalog.Images.ReorderImagesInput": {
+            imageIds?: string[] | null;
+            /** Format: uuid */
+            coverImageId?: string | null;
+        };
+        "CarDealership.CoreService.Catalog.Images.UpdateImageInput": {
+            alt?: string | null;
+        };
+        "CarDealership.CoreService.Catalog.Public.PublicBrandDto": {
+            /** Format: uuid */
+            id?: string;
+            name?: string | null;
+            slug?: string | null;
+            logoKey?: string | null;
+            /** Format: int32 */
+            displayOrder?: number;
+        };
+        "CarDealership.CoreService.Catalog.Public.PublicCarCardDto": {
+            /** Format: uuid */
+            id?: string;
+            brandName?: string | null;
+            brandSlug?: string | null;
+            name?: string | null;
+            slug?: string | null;
+            /** Format: int64 */
+            minPrice?: number | null;
+            /** Format: int64 */
+            maxPrice?: number | null;
+            coverStorageKey?: string | null;
+            coverAlt?: string | null;
+            isFeatured?: boolean;
+            /** Format: date-time */
+            publishedAt?: string | null;
+            bodyTypes?: string[] | null;
+            fuels?: string[] | null;
+            transmissions?: string[] | null;
+            seats?: number[] | null;
+        };
+        "CarDealership.CoreService.Catalog.Public.PublicCarListDto": {
+            items?: components["schemas"]["CarDealership.CoreService.Catalog.Public.PublicCarCardDto"][] | null;
+            /** Format: int64 */
+            totalItems?: number;
+            /** Format: int32 */
+            totalPages?: number;
+            /** Format: int32 */
+            page?: number;
+            /** Format: int32 */
+            pageSize?: number;
+        };
+        "CarDealership.CoreService.Catalog.Public.PublicCarModelDetailDto": {
+            /** Format: uuid */
+            id?: string;
+            brandName?: string | null;
+            brandSlug?: string | null;
+            name?: string | null;
+            slug?: string | null;
+            description?: string | null;
+            /** Format: int64 */
+            minPrice?: number | null;
+            /** Format: int64 */
+            maxPrice?: number | null;
+            images?: components["schemas"]["CarDealership.CoreService.Catalog.Public.PublicImageDto"][] | null;
+            variants?: components["schemas"]["CarDealership.CoreService.Catalog.Public.PublicCarVariantDto"][] | null;
+        };
+        "CarDealership.CoreService.Catalog.Public.PublicCarModelLookupDto": {
+            redirect?: string | null;
+            carModel?: components["schemas"]["CarDealership.CoreService.Catalog.Public.PublicCarModelDetailDto"];
+        };
+        "CarDealership.CoreService.Catalog.Public.PublicCarVariantDto": {
+            /** Format: uuid */
+            id?: string;
+            name?: string | null;
+            /** Format: int64 */
+            referencePrice?: number | null;
+            contactForPrice?: boolean;
+            bodyType?: string | null;
+            fuel?: string | null;
+            transmission?: string | null;
+            /** Format: int32 */
+            seats?: number;
+            engine?: string | null;
+            power?: string | null;
+            extraSpecGroups?: components["schemas"]["CarDealership.CoreService.Catalog.Public.PublicExtraSpecGroupDto"][] | null;
+        };
+        "CarDealership.CoreService.Catalog.Public.PublicExtraSpecDto": {
+            name?: string | null;
+            value?: string | null;
+            unit?: string | null;
+        };
+        "CarDealership.CoreService.Catalog.Public.PublicExtraSpecGroupDto": {
+            group?: string | null;
+            items?: components["schemas"]["CarDealership.CoreService.Catalog.Public.PublicExtraSpecDto"][] | null;
+        };
+        "CarDealership.CoreService.Catalog.Public.PublicImageDto": {
+            storageKey?: string | null;
+            alt?: string | null;
+            isCover?: boolean;
+        };
+        "CarDealership.CoreService.Catalog.Public.SitemapEntryDto": {
+            path?: string | null;
+            /** Format: date-time */
+            lastModified?: string | null;
+        };
         "CarDealership.CoreService.Identity.CurrentSessionDto": {
             /** Format: uuid */
             sessionId?: string;
@@ -249,6 +1468,16 @@ export interface components {
         "CarDealership.CoreService.Identity.SessionFailureDto": {
             error?: string | null;
             message?: string | null;
+        };
+        "Volo.Abp.Application.Dtos.PagedResultDto`1[[CarDealership.CoreService.Catalog.Brands.BrandDto, CarDealership.CoreService.Application.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+            items?: components["schemas"]["CarDealership.CoreService.Catalog.Brands.BrandDto"][] | null;
+            /** Format: int64 */
+            totalCount?: number;
+        };
+        "Volo.Abp.Application.Dtos.PagedResultDto`1[[CarDealership.CoreService.Catalog.CarModels.CarModelSummaryDto, CarDealership.CoreService.Application.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+            items?: components["schemas"]["CarDealership.CoreService.Catalog.CarModels.CarModelSummaryDto"][] | null;
+            /** Format: int64 */
+            totalCount?: number;
         };
     };
     responses: never;
