@@ -25,6 +25,10 @@ export interface ProblemDetails {
   rules?: ProblemRule[];
   currentState?: string;
   allowedTargets?: string[];
+  /** 409 trùng: tên trường bị trùng (`name`, `slug`). */
+  field?: string;
+  /** 422 Brand còn CarModel Published: các mẫu xe cần ẩn trước. */
+  items?: { name: string; slug: string }[];
 }
 
 const TYPE_BASE = 'https://cdp.example/errors/';
@@ -221,6 +225,20 @@ function buildProblem(n: Normalized, correlationId: string): ProblemDetails {
     if (errors) problem.errors = errors;
   }
 
+  if (n.status === 409 && isRecord(n.data)) {
+    const field =
+      typeof n.data.field === 'string' && FIELD_KEY.test(n.data.field)
+        ? n.data.field
+        : undefined;
+    if (field) problem.field = field;
+  }
+  if (n.status === 422 && isRecord(n.data) && Array.isArray(n.data.items)) {
+    const items = n.data.items
+      .filter(isRecord)
+      .map((i) => ({ name: safeText(i.name), slug: safeText(i.slug) }))
+      .filter((i): i is { name: string; slug: string } => !!i.name && !!i.slug);
+    if (items.length > 0) problem.items = items;
+  }
   if (n.status === 422 && isRecord(n.data)) {
     const rules = buildRules(n.data.rules);
     if (rules) problem.rules = rules;
