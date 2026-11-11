@@ -60,6 +60,14 @@ const SHARP_INPUT = {
   failOn: 'error' as const,
 };
 
+/**
+ * Bộ nhớ native của sharp (libvips) nằm ngoài heap Node. Đo Ngày 89 (resource-usage.md): ảnh PNG 10.000×10.000 với
+ * mặc định (cache bật, concurrency = số lõi) đẩy RSS thêm ~350 MiB, vượt ngưỡng 80% × 512 MB của Render free.
+ * Tắt cache và chạy 1 luồng libvips mỗi ảnh hạ còn ~175 MiB, thời gian xử lý gần như không đổi.
+ */
+sharp.cache(false);
+sharp.concurrency(1);
+
 @Injectable()
 export class ImageProcessor {
   async process(input: Buffer): Promise<ProcessedVariant[]> {
@@ -78,7 +86,7 @@ export class ImageProcessor {
 
     try {
       meta = await sharp(input, SHARP_INPUT).metadata();
-    } catch  {
+    } catch {
       throw new ImageRejectedError('Corrupt');
     }
 
